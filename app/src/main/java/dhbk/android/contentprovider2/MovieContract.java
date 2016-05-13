@@ -12,7 +12,7 @@ import android.provider.BaseColumns;
 // Inside of our MovieContract class, we need to define a few properties: a content authority, which is a unique identifier for our database, a base URI, and path names for each table:
 
 public class MovieContract {
-    // TODO: 5/13/16 địa chỉ content provider
+    // TODO: 5/13/16 bước 1: tạo địa chỉ uri của content provider
     /**
      * The Content Authority is a name for the entire content provider, similar to the relationship
      * between a domain name and its website. A convenient string to use for content authority is
@@ -34,7 +34,7 @@ public class MovieContract {
     public static final String PATH_GENRE = "genre";
 
 
-
+    // TODO: 5/13/16 bước 2: tạo địa chỉ uri của từng table trong database
     /**
      * Create one class for each table that handles all information regarding the table schema and
      * the URIs related to it.
