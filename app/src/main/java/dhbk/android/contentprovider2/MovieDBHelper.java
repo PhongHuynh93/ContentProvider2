@@ -39,4 +39,33 @@ public class MovieDBHelper extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 
     }
+
+    // TODO: 5/13/16 bước 5: code SQL tạo database
+    /**
+     * Inserts the genre table into the database.
+     * @param db The SQLiteDatabase the table is being inserted into.
+     */
+    private void addGenreTable(SQLiteDatabase db){
+        db.execSQL(
+                "CREATE TABLE " + MovieContract.GenreEntry.TABLE_NAME + " (" +
+                        MovieContract.GenreEntry._ID + " INTEGER PRIMARY KEY, " +
+                        MovieContract.GenreEntry.COLUMN_NAME + " TEXT UNIQUE NOT NULL);"
+        );
+    }
+
+    /**
+     * Inserts the movie table into the database.
+     * @param db The SQLiteDatabase the table is being inserted into.
+     */
+    private void addMovieTable(SQLiteDatabase db){
+        db.execSQL(
+                "CREATE TABLE " + MovieContract.MovieEntry.TABLE_NAME + " (" +
+                        MovieContract.MovieEntry._ID + " INTEGER PRIMARY KEY, " +
+                        MovieContract.MovieEntry.COLUMN_NAME + " TEXT NOT NULL, " +
+                        MovieContract.MovieEntry.COLUMN_RELEASE_DATE + " TEXT NOT NULL, " +
+                        MovieContract.MovieEntry.COLUMN_GENRE + " INTEGER NOT NULL, " +
+                        "FOREIGN KEY (" + MovieContract.MovieEntry.COLUMN_GENRE + ") " +
+                        "REFERENCES " + MovieContract.GenreEntry.TABLE_NAME + " (" + MovieContract.GenreEntry._ID + "));"
+        );
+    }
 }
